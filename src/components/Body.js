@@ -1,16 +1,17 @@
 // import { restrauntList } from './Config';
 import RestrauntCard from './RestrauntCard';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Shimmer from './Shimmer.js';
 import { Link } from 'react-router-dom';
 import { filterData } from '../utils/helper';
 import useOnline from '../utils/useOnline';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
 	const [allRestraunts, setAllRestraunts] = useState([]);
 	const [filteredRestraunts, setFilteredRestraunts] = useState([]);
 	const [searchText, setSearchText] = useState('');
-
+	const { user, setUser } = useContext(UserContext);
 	// if (filteredRestraunts?.length === 0)
 	// 	return <h1>No Restraunts match your Filter!!</h1>;
 
@@ -57,6 +58,7 @@ const Body = () => {
 					placeholder='Search'
 					value={searchText}
 					onChange={(e) => setSearchText(e.target.value)}
+					autoFocus
 				/>
 				<button
 					className=' p-2 m-2 bg-purple-600 hover:bg-purple-400 text-white rounded-md '
@@ -69,6 +71,17 @@ const Body = () => {
 				>
 					Search
 				</button>
+
+				{/* context modification */}
+				{/* <input
+					value={user.name}
+					onChange={(e) =>
+						setUser({
+							name: e.target.value,
+							email: 'newEmail@gmail.com',
+						})
+					}
+				></input> */}
 			</div>
 			<div className='restraunt-list flex flex-wrap'>
 				{filteredRestraunts.map((restraunt) => (
