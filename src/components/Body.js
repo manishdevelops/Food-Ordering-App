@@ -29,11 +29,14 @@ const Body = () => {
 			if (!data.ok) {
 				throw Error('wrong url');
 			}
-			const json = await data.json();
-			console.log(json);
-			setAllRestraunts(json?.data?.cards[2]?.data?.data?.cards);
-			setFilteredRestraunts(json?.data?.cards[2].data?.data?.cards);
-			// console.log('render');
+			const json = await data?.json();
+			console.log(json?.data?.cards?.[2]?.data?.data?.cards);
+			setAllRestraunts(json?.data?.cards?.[2]?.data?.data?.cards);
+			setFilteredRestraunts(json?.data?.cards?.[2]?.data?.data?.cards);
+
+			// setAllRestraunts(json?.data?.cards?.[1]?.data?.data?.cards);
+			// setFilteredRestraunts(json?.data?.cards?.[1]?.data?.data?.cards);
+			console.log('render');
 		} catch (err) {
 			console.log(err);
 			throw new Error(`something went wrong ${err.message}`);
