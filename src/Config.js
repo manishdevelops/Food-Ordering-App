@@ -1,6 +1,9 @@
 export const IMG_CDN_URL =
 	'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/';
 
+export const logo =
+	'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBL9bhJXk8totURVHPPIDg2cMdLJxEqkAaqR2YDRgwx1Bk0F5ihRvqSWy_S-C2YDnj2j8&usqp=CAU';
+
 export const restrauntList = [
 	{
 		type: 'restaurant',
