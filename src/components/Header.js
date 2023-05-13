@@ -1,12 +1,14 @@
 import { useState, useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
 import { logo } from '../Config.js';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 const Title = () => (
 	<a href='/'>
-		<img className='h-28 p-2' alt='logo' src={logo} />
+		<img className='h-28 p-2 ' data-testid='logo' alt='logo' src={logo} />
 	</a>
 );
 
@@ -14,6 +16,9 @@ const Header = () => {
 	const [isLoggedIn, setLoggedIn] = useState(true);
 	const isOnline = useOnline();
 	const { user } = useContext(UserContext);
+
+	const cartItems = useSelector((store) => store.cart.items);
+	console.log(cartItems);
 
 	return (
 		<div className='flex justify-between bg-pink-50 shadow-lg sm:bg-blue-50'>
@@ -30,10 +35,10 @@ const Header = () => {
 						<Link to='/contact'>Contact</Link>
 					</li>
 					<li className='px-2'>
-						<Link to='/cart'>Cart</Link>
+						<Link to='/instamart '>Instamart</Link>
 					</li>
 					<li className='px-2'>
-						<Link to='/instamart '>Instamart</Link>
+						<Link to='/cart'>Cart- {cartItems.length} items</Link>
 					</li>
 				</ul>
 			</div>
