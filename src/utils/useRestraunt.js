@@ -12,9 +12,14 @@ const useRestraunt = (resId) => {
 			`https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.2488212&lng=85.79146449999999&restaurantId=${resId}&submitAction=ENTER`
 		);
 		const json = await data.json();
-		// console.log(json);
-		console.log(json.data.cards);
-		setRestraunt(json?.data?.cards[0]?.card?.card?.info);
+		// console.log(json.data.cards);
+		// setRestraunt(json?.data?.cards[0]?.card?.card?.info);
+		setRestraunt({
+			data: {
+				restraunt: json?.data?.cards[0]?.card?.card?.info,
+				menu: json.data.cards,
+			},
+		});
 	}
 
 	return restraunt;
